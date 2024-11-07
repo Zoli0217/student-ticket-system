@@ -1,0 +1,19 @@
+<h1>Index page</h1>
+<h2>Hello {{user}}</h2>
+<a href="{% url 'logout' %}">Kijelentkezés</a>
+
+<h1>Új ticket</h1>
+<form method="post">
+    {{ticketform.as_p}}
+    {% csrf_token %}
+    <input type="submit" value="Elküld">
+</form>
+
+{% for ticket in tickets %}
+<div>
+    <h2>{{ ticket.subject }}</h2>
+    <p>{{ ticket.message }}</p>
+    <span>{{ ticket.status }}</span>
+</div>
+{% endfor %}
+
